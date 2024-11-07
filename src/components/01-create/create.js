@@ -32,13 +32,13 @@ const Create = () => {
       price: article.price,
       content: article.content,
       stock: article.stock,
-      online: true,
+      online: article.online,
       picture: article.picture,
     };
 
     article.array.push(product);
+    axios.post(" http://localhost:8000/api/article/add ", {product})
     console.log(article.array);
-    axios.post(" http://localhost:8000/api/article/add")
   };
   
 
