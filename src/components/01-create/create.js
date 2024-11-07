@@ -1,101 +1,123 @@
-import React, { useState } from 'react'
-
-// IMG
-import Corbeille from '../../assets/corbeille.png'
-
-// CSS
-import './style.css'
+import React, { useState } from "react";
 
 const Create = () => {
+  const [article, setArticle] = useState(
+    {
+      array: [],
+      name: "",
+      category: "",
+      brand: "",
+      price: 0,
+      content: "",
+      stock: 0,
+      online: false,
+      picture: "",
+    },
+  );
 
-  const [article, setArticle] = useState({
-    array: [],
-    task: '',
-  })
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setArticle((article) => ({ ...article, [name]: value }));
+    console.log(article);
+  };
 
-  const handleChange = (e) => {
-    const { name, value } = e.target
-    setTodo(acritcle => ({ ...todo, [name]: value }))
-    console.log(todo);
-    
-  }
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
-  const save = (array) => {
-    localStorage.setItem('todo', JSON.stringify(array))
-  }
+    const product = {
+      name: article.name,
+      category: article.category,
+      brand: article.brand,
+      price: article.price,
+      content: article.content,
+      stock: article.stock,
+      online: true,
+      picture: article.picture,
+    };
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    const objet = { 
-      name: todo.task,
-      isActive: true
-    }
+    article.array.push(product);
+    console.log(article.array);
 
-    todo.array.push(objet)
-
-    save(todo.array)
-
-    e.target.reset()
-    setTodo(todo => ({...todo, task: '' }))
-  }
-
-  const deleteTask = (indexTask) => {
-    // const arrayAfterDelete = todo.array.filter((task, index) => index !== indexTask)
+    // e.target.reset()
+    // setTodo(todo => ({...todo, [name]: '' }))
+  };
   
-    const arrayAfterDelete = todo.array.filter((task, index) => {
-      if(index !== indexTask) return task
-    })    
 
-    setTodo({array: arrayAfterDelete})
-  }
-
-  const updateTask = (indexTask) => {
-    const arrayAfterUpdate = todo.array.filter((task, index) => {
-      if(index === indexTask){
-        task.isActive = !task.isActive
-      }
-      return task
-    })
-  
-    setTodo({array: arrayAfterUpdate})
-    console.log(todo.array);
-  }
-    
-
-  return ( 
+  return (
     <div>
       <h1>Create Article </h1>
-      {todo.array.map((task, index) => (
-        <div key={index}>
-          <p 
-            className={task.isActive ? "task" : 'barree'}
-            onClick={() => updateTask(index)} 
-            >
-              {task.name}
-            </p>
-          <img 
-            src={Corbeille}  
-            width={20}
-            alt='corbeille'
-            onClick={() => deleteTask(index)}
-          />
-        </div>
-      ))
-
-      }
+      {article.array.map((product, index) => (
+        
+          <div key={index}>
+            <p>{product.name}</p>
+            <img src={product.picture} width={20} alt="picture" />
+          </div>
+      ))}
+    
       <form onSubmit={handleSubmit}>
-        <input 
+        <label htmlFor="name"></label>
+        <input
           type="text"
-          placeholder='Add article '
-          name='task'
-          onChange={handleChange} 
+          placeholder="Name of the article"
+          name="name"
+          onChange={handleChange}
           required
         />
+
+        <label htmlFor="category"></label>
+        <input
+          type="text"
+          placeholder="Category of the article"
+          name="category"
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="brand"></label>
+        <input
+          type="text"
+          placeholder="Brand of the article"
+          name="brand"
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="price"></label>
+        <input
+          type="number"
+          placeholder="Price of the article"
+          name="price"
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="content"></label>
+        <input
+          type="text"
+          placeholder="Description of the article"
+          name="content"
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="stock"></label>
+        <input
+          type="number"
+          placeholder="Stock of the article"
+          name="stock"
+          onChange={handleChange}
+          required
+        />
+        <label htmlFor="picture"></label>
+        <input
+          type="text"
+          placeholder="Link for a picture"
+          name="picture"
+          onChange={handleChange}
+          required
+        />
+
         <button>Add</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default Create
