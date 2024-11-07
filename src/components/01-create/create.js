@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
+import axios from 'axios'
 
 const Create = () => {
   const [article, setArticle] = useState(
@@ -37,9 +38,7 @@ const Create = () => {
 
     article.array.push(product);
     console.log(article.array);
-
-    // e.target.reset()
-    // setTodo(todo => ({...todo, [name]: '' }))
+    axios.post(" http://localhost:8000/api/article/add")
   };
   
 
@@ -50,7 +49,7 @@ const Create = () => {
         
           <div key={index}>
             <p>{product.name}</p>
-            <img src={product.picture} width={20} alt="picture" />
+            <img src={product.picture} width={50} alt="picture" />
           </div>
       ))}
     
