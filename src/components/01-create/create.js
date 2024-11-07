@@ -37,8 +37,17 @@ const Create = () => {
     };
 
     article.array.push(product);
-    axios.post(" http://localhost:8000/api/article/add ", {product})
-    console.log(article.array);
+    axios.post(" http://localhost:8000/api/article/add ", {
+      name: product.name,
+      category: product.category,
+      brand: product.brand,
+      price: product.price,
+      content: product.content,
+      stock: product.stock,
+      online: product.online,
+      picture: product.picture,
+    })
+    console.log(product);
   };
   
 
