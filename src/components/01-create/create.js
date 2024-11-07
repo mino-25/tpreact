@@ -12,7 +12,7 @@ const Create = () => {
       content: "",
       stock: 0,
       online: false,
-      picture: "",
+      picture: ''
     },
   );
 
@@ -33,7 +33,7 @@ const Create = () => {
       content: article.content,
       stock: article.stock,
       online: article.online,
-      picture: article.picture,
+      picture: article.picture
     };
 
     article.array.push(product);
@@ -45,9 +45,12 @@ const Create = () => {
       content: product.content,
       stock: product.stock,
       online: product.online,
-      picture: product.picture,
+      picture: [{
+        img: product.picture,
+      }],
     })
     console.log(product);
+    console.log(product.picture.img);
   };
   
 
