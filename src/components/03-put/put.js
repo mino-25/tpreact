@@ -5,16 +5,16 @@ const Put = () => {
 
     const [articles, setArticles] = useState({})
     const [selectArticleId, setSelectedArticleId] = useState(null)
-    const [formData, setFormData] = useState([
-        name:'',
-        category:'',
+    const [formData, setFormData] = useState({
+        name:"",
+        category:"",
         brand: "",
         price: 0,
         content: "",
         stock: 0,
         online: false,
         picture: "",
-    ]);
+    });
 
         useEffect(() => {
             const fetchbyUser = async() => {
