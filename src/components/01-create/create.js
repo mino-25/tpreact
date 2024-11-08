@@ -22,7 +22,7 @@ const Create = () => {
     console.log(article);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     const product = {
@@ -35,22 +35,23 @@ const Create = () => {
       online: article.online,
       picture: article.picture
     };
-
-    article.array.push(product);
-    axios.post(" http://localhost:8000/api/article/add ", {
-      name: product.name,
-      category: product.category,
-      brand: product.brand,
-      price: product.price,
-      content: product.content,
-      stock: product.stock,
-      online: product.online,
-      picture: [{
-        img: product.picture,
-      }],
-    })
-    console.log(product);
-    console.log(product.picture.img);
+    try {
+      await axios.post(" http://localhost:8000/api/article/add ", {
+        name: product.name,
+        category: product.category,
+        brand: product.brand,
+        price: product.price,
+        content: product.content,
+        stock: product.stock,
+        online: product.online,
+        picture: [{
+          img: product.picture,
+        }],
+      })
+      
+    } catch (error) {
+      console.error(error.message)
+    }
   };
   
 

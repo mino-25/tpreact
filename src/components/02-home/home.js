@@ -23,7 +23,7 @@ const Home = () => {
         {articles.map((product, index) =>(
             <div key={index}>
             <p>{product.name}</p>
-            <img src={product.picture} width={50} alt="picture" />
+            <img src={product.picture[0].img} width={50} alt="picture" />
           </div>
         ) )}
     </div>
