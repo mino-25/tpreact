@@ -3,6 +3,7 @@ import Create from './components/01-create/create';
 import Home from './components/02-home/home';
 import Header from './components/00-header/header';
 import Nothing from './components/00-header/nothing';
+import Put from './components/03-put/put';
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
         <Route path="/create" element={<Create />}/>
         <Route index element={<Home />}/>
         <Route path="*" element={<Nothing />}/>
+        <Route path='/put'element={<Put />}/>
         
       </Route>
 
