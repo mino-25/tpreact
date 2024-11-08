@@ -140,9 +140,5 @@ const Put = () => {
         </div>
       )
     }
-        
-
-    
-
 
 export default Put
