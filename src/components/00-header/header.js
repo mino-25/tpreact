@@ -1,8 +1,8 @@
 import React, { useState } from "react";
+import './index.css'
 
 import { Link, Outlet } from "react-router-dom";
 const Header = () => {
-  const [id, setId] = useState(25);
   return (
     <main>
       <header>
